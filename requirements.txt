@@ -1,0 +1,4 @@
+asyncio
+requests
+threading
+Beautifulsoup4
