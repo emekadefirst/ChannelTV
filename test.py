@@ -1,4 +1,3 @@
-import os
 import asyncio
 import requests
 from bs4 import BeautifulSoup
@@ -6,16 +5,11 @@ import sqlite3
 
 
 def create_db():
-    current_directory = os.getcwd()
-
-    
-    db_path = os.path.join(current_directory, 'newsdata.db')
-
-    
-    db = sqlite3.connect(db_path)
+    # Establish connection to the database
+    db = sqlite3.connect('/newsdata.db')
     cursor = db.cursor()
 
-    
+    # Create the articles table if it doesn't exist
     cursor.execute('''CREATE TABLE IF NOT EXISTS articles (
                       id INTEGER PRIMARY KEY,
                       title TEXT,
@@ -33,10 +27,10 @@ async def fetch_content(url):
     response = await loop.run_in_executor(None, requests.get, url)
     return response.text
 
-async def business(db, cursor):
+async def entertainment(db, cursor):
     n = int(input("Enter the number of the last page, i.e scroll down and check\nNB: Add 1 to whatever number it is, E.g If it's 10 pages, type in 11\n>> "))
     print("<<------OK PROCESSING------>>")
-    base_url = 'https://www.channelstv.com/category/business/'
+    base_url = 'https://www.channelstv.com/category/entertainment/'
     for num in range(1, n+1):
         url = f"{base_url}page/{num}"
         content = await fetch_content(url)
@@ -75,10 +69,10 @@ async def business(db, cursor):
     db.commit()
     db.close()
 
-async def bus():
+async def main():
 
     db, cursor = create_db()
-    await business(db, cursor)
+    await entertainment(db, cursor)
 
 # Run the asyncio loop
-
+asyncio.run(main())
