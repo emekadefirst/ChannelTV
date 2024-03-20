@@ -67,7 +67,7 @@ async def politics(db, cursor):
                     
                     # Insert data into the database
                     cursor.execute("INSERT INTO articles (title, content, category, image, date_published) VALUES (?, ?, ?, ?, ?)",
-                                   (title_text, content_text, 'entertainment', image, None))  # Here, date_published is None since it's not provided in the scraping
+                                   (title_text, content_text, 'politics', image, None))  # Here, date_published is None since it's not provided in the scraping
                     
                     print(f"Scraped and stored: {title_text}")
 
