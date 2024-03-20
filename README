@@ -1,0 +1,33 @@
+# ChannelsTV
+
+This Python project allows user/developers analyst to scrape their desired category and number of pages. 
+NB: 
+        if you want to scrape 30 pages you'll input 31
+        Also, we can't scrape 😟 multiple categories due to the db used. 
+        but if you've got other db use maindb.py
+                ```python
+                        python maindb.py
+                ```
+
+
+## Installation
+
+To use this package, you need to clone it first:
+
+```
+git clone 'https://github.com/emekadefirst/ChannelTV.git'
+```
+
+## Usage
+
+###  RUN
+install the requirements
+```python
+        pip install -r requirements.txt
+```
+
+run your main.py
+```python
+        python main.py
+```
+
